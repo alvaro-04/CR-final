@@ -12,6 +12,7 @@ tensorboardX
 pybullet
 attrdict
 scikit-image
+dotenv
 openai-clip
 torch
 torchvision
