@@ -20,6 +20,7 @@ from .robot import setup_sisbot
 
 
 CAM_X, CAM_Y, CAM_Z = 0.05, -0.52, 1.9
+
 DEPTH_RADIUS = 1
 IMG_SIZE = 448
 
@@ -35,6 +36,9 @@ TARGET_LOCATIONS = {
   'bottom right corner': (-0.3,       -0.15,      1.0),
 }
 TARGET_ZONE_POS = [0.7, 0.0, 0.685]
+TARGET_ZONE_FOOD = [0.3, 0.7, 0.685]
+TARGET_ZONE_WASHING_ITEMS = [-0.7, 0, 0.685]
+TARGET_ZONE_TOYS = [-0.3, 0.7, 0.685]
 
 class FailToReachTargetError(RuntimeError):
     pass
@@ -45,6 +49,9 @@ class Environment:
     GRIPPER_MOVING_HEIGHT = 1.25
     GRIPPER_GRASPED_LIFT_HEIGHT = 1.4
     TARGET_ZONE_POS = TARGET_ZONE_POS
+    TARGET_ZONE_FOOD = TARGET_ZONE_FOOD
+    TARGET_ZONE_WASHING_ITEMS = TARGET_ZONE_WASHING_ITEMS
+    TARGET_ZONE_TOYS = TARGET_ZONE_TOYS
     SIMULATION_STEP_DELAY = 0.0005 #speed of simulator - the lower the fatser ## should be a param
     FINGER_LENGTH = 0.06
     Z_TABLE_TOP = 0.785
@@ -88,8 +95,36 @@ class Environment:
                                           [0.7, 0.0, 0.66],
                                           p.getQuaternionFromEuler([0, 0, 0]),
                                           useFixedBase=True)
+        self.target_table_id_food = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/target_table.urdf'),
+                                          [0.3, 0.7, 0.66],
+                                          p.getQuaternionFromEuler([0, 0, 0]),
+                                          useFixedBase=True)
+        self.target_table_id_washing_items = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/target_table.urdf'),
+                                          [-0.7, 0, 0.66],
+                                          p.getQuaternionFromEuler([0, 0, 0]),
+                                          useFixedBase=True)
+        self.target_table_id_toys = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/target_table.urdf'),
+                                          [-0.3, 0.7, 0.66],
+                                          p.getQuaternionFromEuler([0, 0, 0]),
+                                          useFixedBase=True)
         self.target_id = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/traybox.urdf'),
                                     self.TARGET_ZONE_POS,
+                                    p.getQuaternionFromEuler([0, 0, 0]),
+                                    useFixedBase=True,
+                                    globalScaling=0.7)
+        
+        self.target_id_food = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/traybox.urdf'),
+                                    self.TARGET_ZONE_FOOD,
+                                    p.getQuaternionFromEuler([0, 0, 0]),
+                                    useFixedBase=True,
+                                    globalScaling=0.7)
+        self.target_id_washing_items = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/traybox.urdf'),
+                                    self.TARGET_ZONE_WASHING_ITEMS,
+                                    p.getQuaternionFromEuler([0, 0, 0]),
+                                    useFixedBase=True,
+                                    globalScaling=0.7)
+        self.target_id_toys = p.loadURDF(os.path.join(self.assets_root, 'urdf/objects/traybox.urdf'),
+                                    self.TARGET_ZONE_TOYS,
                                     p.getQuaternionFromEuler([0, 0, 0]),
                                     useFixedBase=True,
                                     globalScaling=0.7)
@@ -625,6 +660,7 @@ class Environment:
         Pick object by id (from pre-set grasp pose)
         """
         succes_grasp, grasped_obj_id = False, None
+        print(self.obj_ids)
         idx = self.obj_ids.index(obj_id)
         grasps = self.obj_grasps[idx]
         assert grasps is not None, "first have to set grasps with env.set_obj_grasps()"
@@ -643,7 +679,8 @@ class Environment:
             if succes_grasp:
                 assert grasped_obj_id == obj_id, f'Grasped wrong object {self.obj_names[self.obj_ids.index(grasped_obj_id)]}'
                 if vis:
-                    self.remove_drawing(LID)        
+                    self.remove_drawing(LID)
+                print('grasping succeeded.')   
                 return True, obj_id, g
             
             print('Grasping failed. Retrying...')
@@ -772,7 +809,7 @@ class Environment:
 
         return succes_grasp, grasped_obj_id
 
-    def clean(self, 
+    """def clean(self, 
               pos: tuple, 
               roll: float, 
               gripper_opening_length: float, 
@@ -780,11 +817,11 @@ class Environment:
               debug: bool = False,
               vis: bool = False
     ):
-        """
+        
         Method to pick object and place it in tray location
         pos [x y z]: The axis in real-world coordinate
         roll: float,   for grasp, it should be in [-pi/2, pi/2)
-        """
+        
         succes_grasp, succes_target = False, False
         grasped_obj_id = None
         
@@ -853,12 +890,100 @@ class Environment:
             succes_target = True
             #self.remove_obj(grasped_obj_id)
 
+        return succes_grasp, succes_target"""
+    
+    def clean(self, 
+              pos: tuple, 
+              roll: float, 
+              gripper_opening_length: float, 
+              obj_height: float, 
+              debug: bool = False,
+              vis: bool = False,
+              TARGET_ZONE_POS: tuple = None,
+    ):
+        """
+        Method to pick object and place it in tray location
+        pos [x y z]: The axis in real-world coordinate
+        roll: float,   for grasp, it should be in [-pi/2, pi/2)
+        """
+        succes_grasp, succes_target = False, False
+        grasped_obj_id = None
+        
+        LID = []
+        if vis:
+            if len(LID) > 0:
+                self.remove_drawing(LID)
+                LID = []
+            g = pos[0], pos[1], pos[2], roll, gripper_opening_length, obj_height
+            LID = self.draw_predicted_grasp(g, color=[0,1,0], lineIDs=LID)
+            self.dummy_simulation_steps(10)
+            
+        x, y, z = pos
+        # Substracht gripper finger length from z
+        z -= self.finger_length
+        z = np.clip(z, *self.ee_position_limit[2])
+            
+        # Move above target
+        #self.reset_robot()
+        self.move_gripper(0.1)
+        orn = p.getQuaternionFromEuler([roll, np.pi/2, 0.0])
+        self.move_ee([x, y, self.GRIPPER_MOVING_HEIGHT, orn])
+
+        # Reduce grip to get a tighter grip
+        gripper_opening_length *= self.GRIP_REDUCTION
+            
+        # Grasp and lift object
+        z_offset = self.calc_z_offset(gripper_opening_length)
+        self.move_ee([x, y, z + z_offset, orn])
+        # self.move_gripper(gripper_opening_length)
+        self.auto_close_gripper(check_contact=True)
+        for _ in range(40):
+            self.step_simulation()
+        self.move_ee([x, y, self.GRIPPER_MOVING_HEIGHT, orn])
+
+        # check if the object has been grasped and lifted off the table
+        grasped_id = self.check_grasped_id()
+        if len(grasped_id) == 1:
+            succes_grasp = True
+            grasped_obj_id = grasped_id[0]
+        else:
+            return succes_target, succes_grasp
+
+        if vis:
+            self.remove_drawing(LID)
+            self.dummy_simulation_steps(10)
+            
+        if TARGET_ZONE_POS is not None:
+            target_zone = TARGET_ZONE_POS
+        else:
+            target_zone = self.TARGET_ZONE_POS
+        # Move object to target zone
+        y_drop = target_zone[2] + z_offset + obj_height + 0.15
+        y_orn = p.getQuaternionFromEuler([-np.pi*0.25, np.pi/2, 0.0])
+
+        #self.move_arm_away()
+        self.move_ee([target_zone[0],
+                     target_zone[1], 1.25, y_orn])
+        self.move_ee([target_zone[0],
+                     target_zone[1], y_drop, y_orn])
+        self.move_gripper(0.085)
+        self.move_ee([target_zone[0], target_zone[1],
+                     self.GRIPPER_MOVING_HEIGHT, y_orn])
+
+        # Wait then check if object is in target zone
+        for _ in range(20):
+            self.step_simulation()
+
+        if self.check_target_reached(grasped_obj_id):
+            succes_target = True
+            self.remove_obj(grasped_obj_id)
+
         return succes_grasp, succes_target
 
-    def clean_obj(self, obj_id: int, debug: bool = False, vis: bool = False):
-        """
+    """def clean_obj(self, obj_id: int, debug: bool = False, vis: bool = False):
+        
         Method to pick object by id and place it in tray location
-        """
+        
         succes_grasp, succes_target = False, False 
     
         # pick object by id
@@ -881,6 +1006,49 @@ class Environment:
                      self.TARGET_ZONE_POS[1], y_drop, y_orn])
         self.move_gripper(0.085)
         self.move_ee([self.TARGET_ZONE_POS[0], self.TARGET_ZONE_POS[1],
+                     self.GRIPPER_MOVING_HEIGHT, y_orn])
+
+        # Wait then check if object is in target zone
+        for _ in range(20):
+            self.step_simulation()
+
+        if self.check_target_reached(grasped_obj_id):
+            succes_target = True
+            #self.remove_obj(grasped_obj_id)
+
+        return succes_grasp, succes_target"""
+    
+    def clean_obj(self, obj_id: int, debug: bool = False, vis: bool = False, TARGET_ZONE_POS: tuple = None):
+        """
+        Method to pick object by id and place it in tray location
+        """
+        succes_grasp, succes_target = False, False 
+    
+        # pick object by id
+        succes_grasp, grasped_obj_id, grasp = self.pick_obj(obj_id, vis=vis)
+
+        if not succes_grasp:
+            print('Grasping failed. Exitting')
+            return False, False
+            
+        # Move object to target zone
+        x, y, z, yaw, opening_len, obj_height = grasp
+        z_offset = self.calc_z_offset(opening_len)
+        y_drop = self.TARGET_ZONE_POS[2] + z_offset + obj_height + 0.15
+        y_orn = p.getQuaternionFromEuler([-np.pi*0.25, np.pi/2, 0.0])
+
+        if TARGET_ZONE_POS is not None:
+            target_zone = TARGET_ZONE_POS
+        else:
+            target_zone = self.TARGET_ZONE_POS
+
+        #self.move_arm_away()
+        self.move_ee([target_zone[0],
+                     target_zone[1], 1.25, y_orn])
+        self.move_ee([target_zone[0],
+                     target_zone[1], y_drop, y_orn])
+        self.move_gripper(0.085)
+        self.move_ee([target_zone[0], target_zone[1],
                      self.GRIPPER_MOVING_HEIGHT, y_orn])
 
         # Wait then check if object is in target zone
@@ -917,7 +1085,7 @@ class Environment:
                                     [x - gripper_size*math.sin(yaw), y - gripper_size*math.cos(yaw), z-finger_size], 
                                     color, lineWidth=6))
         lineIDs.append(p.addUserDebugLine([x + gripper_size*math.sin(yaw), y + gripper_size*math.cos(yaw), z], 
-                                    [x + gripper_size*math.sin(yaw), y + gripper_size*math.cos(yaw), z-finger_size], 
+                                    [x + gripper_size*math.siTARGET_ZONE_POSn(yaw), y + gripper_size*math.cos(yaw), z-finger_size], 
                                     color, lineWidth=6))
         
         return lineIDs

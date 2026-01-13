@@ -7,7 +7,8 @@ import numpy as np
 from PIL import Image
 import cv2
 
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+#device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+device = torch.device("cpu")
 
 # helper function
 def display_image(path_or_array, size=(10, 10)):

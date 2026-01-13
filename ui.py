@@ -75,8 +75,11 @@ class RobotEnvUI:
         
         # constants
         self.TARGET_ZONE_POS = TARGET_ZONE_POS
+        self.TARGET_ZONE_FOOD = TARGET_ZONE_FOOD
+        self.TARGET_ZONE_WASHING_ITEMS = TARGET_ZONE_WASHING_ITEMS
+        self.TARGET_ZONE_TOYS = TARGET_ZONE_TOYS
         self.ADMISSIBLE_OBJECTS = ADMISSIBLE_OBJECTS
-        self.ADMISSIBLE_LOCATIONS = list(self.env.TARGET_LOCATIONS.keys()) + ['tray']
+        self.ADMISSIBLE_LOCATIONS = list(self.env.TARGET_LOCATIONS.keys()) + ['tray' , 'food tray' , 'washing items tray' , 'toys tray']
         self.ADMISSIBLE_PREDICATES = ADMISSIBLE_PREDICATES
 
         # load objects
@@ -282,7 +285,20 @@ class RobotEnvUI:
         # move to tray
         if where == 'tray':
             target_loc = self.TARGET_ZONE_POS
-            success_grasp, success_target = self.env.clean_obj(what)
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+        
+        elif where == 'food tray':
+            target_loc = self.TARGET_ZONE_FOOD
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+
+        elif where == 'washing items tray':
+            target_loc = self.TARGET_ZONE_WASHING_ITEMS
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+
+        elif where == 'toys tray':
+            target_loc = self.TARGET_ZONE_TOYS
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+
 
         # move to table location
         elif isinstance(where, str):

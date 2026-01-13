@@ -4,7 +4,9 @@ import numpy as np
 import torch
 from PIL import Image
 
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+#device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+device = torch.device("cpu")
+
 
 from segment_anything import sam_model_registry, SamAutomaticMaskGenerator, SamPredictor
 
