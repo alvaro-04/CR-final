@@ -1,0 +1,622 @@
+[
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[hammer(metal), screwdriver(metal), wooden_board(wood), nails(metal), plastic_cup(plastic), metal_tray, toolbox] \n Create python functions that do the following: move all metal objects to the metal tray."
+    },
+    {
+      "from": "gpt",
+      "value": "def move_all_metal_objects_to_tray():\n    # Define which objects are metal\n    metal_objects = [\"hammer\", \"screwdriver\", \"nails\"]\n    \n    # Move each metal object to the tray if not already there\n    for obj in metal_objects:\n        if find(obj) != \"metal_tray\":\n            pick_and_place(obj, \"metal_tray\")\n        else:\n            print(f\"{obj} already in metal_tray, cannot move\")\n\nmove_all_metal_objects_to_tray()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[red_apple(fruit), banana(fruit), carrot(vegetable), broccoli(vegetable), orange(fruit), vegetable_basket, fruit_bowl] \n Create python functions that do the following: move all fruits to the fruit bowl and all vegetables to the vegetable basket."
+    },
+    {
+      "from": "gpt",
+      "value": "def categorize_food_items():\n    # Define fruits and vegetables\n    fruits = [\"red_apple\", \"banana\", \"orange\"]\n    vegetables = [\"carrot\", \"broccoli\"]\n    \n    # Move fruits to fruit bowl\n    for fruit in fruits:\n        if find(fruit) != \"fruit_bowl\":\n            pick_and_place(fruit, \"fruit_bowl\")\n        else:\n            print(f\"{fruit} already in fruit_bowl, cannot move\")\n    \n    # Move vegetables to vegetable basket\n    for vegetable in vegetables:\n        if find(vegetable) != \"vegetable_basket\":\n            pick_and_place(vegetable, \"vegetable_basket\")\n        else:\n            print(f\"{vegetable} already in vegetable_basket, cannot move\")\n\ncategorize_food_items()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[notebook(stationery), pen(stationery), coffee_mug(drinkware), tea_cup(drinkware), plate(tableware), bowl(tableware), stationery_box, kitchen_cabinet] \n Create python functions that do the following: move all stationery items to the stationery box and all kitchen items to the kitchen cabinet."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_items_by_category():\n    # Define categories\n    stationery_items = [\"notebook\", \"pen\"]\n    kitchen_items = [\"coffee_mug\", \"tea_cup\", \"plate\", \"bowl\"]\n    \n    # Move stationery items\n    for item in stationery_items:\n        if find(item) != \"stationery_box\":\n            pick_and_place(item, \"stationery_box\")\n        else:\n            print(f\"{item} already in stationery_box, cannot move\")\n    \n    # Move kitchen items\n    for item in kitchen_items:\n        if find(item) != \"kitchen_cabinet\":\n            pick_and_place(item, \"kitchen_cabinet\")\n        else:\n            print(f\"{item} already in kitchen_cabinet, cannot move\")\n\norganize_items_by_category()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[screw(metal), bolt(metal), washer(metal), plastic_screw(plastic), rubber_washer(rubber), metal_bin, plastic_bin] \n Create python functions that do the following: move all plastic objects to the plastic bin and all non-plastic objects to the metal bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def separate_by_material():\n    # Define materials\n    plastic_objects = [\"plastic_screw\"]\n    metal_objects = [\"screw\", \"bolt\", \"washer\"]\n    rubber_objects = [\"rubber_washer\"]\n    \n    # Combine non-plastic objects\n    non_plastic_objects = metal_objects + rubber_objects\n    \n    # Move plastic objects to plastic bin\n    for obj in plastic_objects:\n        if find(obj) != \"plastic_bin\":\n            pick_and_place(obj, \"plastic_bin\")\n        else:\n            print(f\"{obj} already in plastic_bin, cannot move\")\n    \n    # Move non-plastic objects to metal bin\n    for obj in non_plastic_objects:\n        if find(obj) != \"metal_bin\":\n            pick_and_place(obj, \"metal_bin\")\n        else:\n            print(f\"{obj} already in metal_bin, cannot move\")\n\nseparate_by_material()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[math_book(book), history_book(book), pencil(stationery), eraser(stationery), ruler(stationery), book_shelf, desk_drawer] \n Create python functions that do the following: move all books to the book shelf and all writing instruments to the desk drawer."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_study_materials():\n    # Define categories\n    books = [\"math_book\", \"history_book\"]\n    writing_instruments = [\"pencil\", \"eraser\", \"ruler\"]\n    \n    # Move books to book shelf\n    for book in books:\n        if find(book) != \"book_shelf\":\n            pick_and_place(book, \"book_shelf\")\n        else:\n            print(f\"{book} already in book_shelf, cannot move\")\n    \n    # Move writing instruments to desk drawer\n    for instrument in writing_instruments:\n        if find(instrument) != \"desk_drawer\":\n            pick_and_place(instrument, \"desk_drawer\")\n        else:\n            print(f\"{instrument} already in desk_drawer, cannot move\")\n\norganize_study_materials()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[cotton_shirt(clothing), wool_sweater(clothing), leather_shoes(footwear), silk_scarf(clothing), rubber_boots(footwear), wardrobe, shoe_rack] \n Create python functions that do the following: move all clothing items to the wardrobe and all footwear to the shoe rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_clothing_and_footwear():\n    # Define categories\n    clothing_items = [\"cotton_shirt\", \"wool_sweater\", \"silk_scarf\"]\n    footwear_items = [\"leather_shoes\", \"rubber_boots\"]\n    \n    # Move clothing to wardrobe\n    for clothing in clothing_items:\n        if find(clothing) != \"wardrobe\":\n            pick_and_place(clothing, \"wardrobe\")\n        else:\n            print(f\"{clothing} already in wardrobe, cannot move\")\n    \n    # Move footwear to shoe rack\n    for footwear in footwear_items:\n        if find(footwear) != \"shoe_rack\":\n            pick_and_place(footwear, \"shoe_rack\")\n        else:\n            print(f\"{footwear} already in shoe_rack, cannot move\")\n\norganize_clothing_and_footwear()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[hammer(tool), wrench(tool), apple(food), banana(food), screwdriver(tool), orange(food), toolbox, fruit_basket] \n Create python functions that do the following: move all tools to the toolbox and all food items to the fruit basket."
+    },
+    {
+      "from": "gpt",
+      "value": "def separate_tools_and_food():\n    # Define categories\n    tools = [\"hammer\", \"wrench\", \"screwdriver\"]\n    food_items = [\"apple\", \"banana\", \"orange\"]\n    \n    # Move tools to toolbox\n    for tool in tools:\n        if find(tool) != \"toolbox\":\n            pick_and_place(tool, \"toolbox\")\n        else:\n            print(f\"{tool} already in toolbox, cannot move\")\n    \n    # Move food items to fruit basket\n    for food in food_items:\n        if find(food) != \"fruit_basket\":\n            pick_and_place(food, \"fruit_basket\")\n        else:\n            print(f\"{food} already in fruit_basket, cannot move\")\n\nseparate_tools_and_food()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[plate, fork, knife, bread, butter, tray, bowl] \n Create python functions that do the following: put the bread in the bowl, then place the knife next to the plate, and put the butter in the top left corner. put the second item you moved in the tray and place the first item you moved next to the fork."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Moving bread to bowl\ndef move_bread_to_bowl():\n    pick_and_place(\"bread\", \"bowl\")\n\n# 2: Place knife next to plate\ndef move_knife_next_to_plate():\n    pick_and_place(\"knife\", \"next to plate\")\n\n# 3: Put butter in top left corner\ndef move_butter_to_top_left_corner():\n    pick_and_place(\"butter\", \"top left corner\")\n\n# 4: Put the second item moved in the tray\n# The second item I moved was the knife\ndef move_knife_to_tray():\n    if find(\"knife\") != \"tray\":\n        pick_and_place(\"knife\", \"tray\")\n    else:\n        print(\"Knife already in tray, cannot move\")\n\n# 5: Place first item moved next to fork\n# The first item I moved was the bread\ndef move_bread_next_to_fork():\n    pick_and_place(\"bread\", \"next to fork\")\n\nmove_bread_to_bowl()\nmove_knife_next_to_plate()\nmove_butter_to_top_left_corner()\nmove_knife_to_tray()\nmove_bread_next_to_fork()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[book, pen, mug, laptop, charger, tray, notebook] \n Create python functions that do the following: place the laptop in the bottom left corner, then put the pen on top of the notebook, and move the mug to the middle. put the third item you moved in the tray, then place the second item you moved next to the book."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Place laptop in bottom left corner\ndef move_laptop_to_bottom_left_corner():\n    pick_and_place(\"laptop\", \"bottom left corner\")\n\n# 2: Put pen on top of notebook\ndef move_pen_on_notebook():\n    pick_and_place(\"pen\", \"on notebook\")\n\n# 3: Move mug to the middle\ndef move_mug_to_middle():\n    pick_and_place(\"mug\", \"middle\")\n\n# 4: Put the third item moved in the tray\n# The third item I moved was the mug\ndef move_mug_to_tray():\n    if find(\"mug\") != \"tray\":\n        pick_and_place(\"mug\", \"tray\")\n    else:\n        print(\"Mug already in tray, cannot move\")\n\n# 5: Place second item moved next to book\n# The second item I moved was the pen\ndef move_pen_next_to_book():\n    pick_and_place(\"pen\", \"next to book\")\n\nmove_laptop_to_bottom_left_corner()\nmove_pen_on_notebook()\nmove_mug_to_middle()\nmove_mug_to_tray()\nmove_pen_next_to_book()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[shirt, pants, shoes, hat, belt, tray, hanger] \n Create python functions that do the following: put the hat on the hanger, then place the belt in the bottom right corner, and move the shoes to the middle. place the first item you moved in the tray, then put the third item you moved next to the shirt."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Put hat on the hanger\ndef move_hat_to_hanger():\n    pick_and_place(\"hat\", \"on hanger\")\n\n# 2: Place belt in bottom right corner\ndef move_belt_to_bottom_right_corner():\n    pick_and_place(\"belt\", \"bottom right corner\")\n\n# 3: Move shoes to the middle\ndef move_shoes_to_middle():\n    pick_and_place(\"shoes\", \"middle\")\n\n# 4: Place first item moved in the tray\n# The first item I moved was the hat\ndef move_hat_to_tray():\n    if find(\"hat\") != \"tray\":\n        pick_and_place(\"hat\", \"tray\")\n    else:\n        print(\"Hat already in tray, cannot move\")\n\n# 5: Put third item moved next to shirt\n# The third item I moved was the shoes\ndef move_shoes_next_to_shirt():\n    pick_and_place(\"shoes\", \"next to shirt\")\n\nmove_hat_to_hanger()\nmove_belt_to_bottom_right_corner()\nmove_shoes_to_middle()\nmove_hat_to_tray()\nmove_shoes_next_to_shirt()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[apple, banana, orange, pear, grapes, tray, basket] \n Create python functions that do the following: place the banana in the basket, then put the grapes in the top left corner, and move the pear to the middle. put the second item you moved in the tray, then place the first item you moved next to the orange."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Place banana in the basket\ndef move_banana_to_basket():\n    pick_and_place(\"banana\", \"basket\")\n\n# 2: Put grapes in top left corner\ndef move_grapes_to_top_left_corner():\n    pick_and_place(\"grapes\", \"top left corner\")\n\n# 3: Move pear to the middle\ndef move_pear_to_middle():\n    pick_and_place(\"pear\", \"middle\")\n\n# 4: Put second item moved in the tray\n# The second item I moved was the grapes\ndef move_grapes_to_tray():\n    if find(\"grapes\") != \"tray\":\n        pick_and_place(\"grapes\", \"tray\")\n    else:\n        print(\"Grapes already in tray, cannot move\")\n\n# 5: Place first item moved next to orange\n# The first item I moved was the banana\ndef move_banana_next_to_orange():\n    pick_and_place(\"banana\", \"next to orange\")\n\nmove_banana_to_basket()\nmove_grapes_to_top_left_corner()\nmove_pear_to_middle()\nmove_grapes_to_tray()\nmove_banana_next_to_orange()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[hammer, nails, screwdriver, screws, wrench, tray, toolbox] \n Create python functions that do the following: put the wrench in the toolbox, then place the hammer in the bottom left corner, and move the screwdriver to the middle. put the third item you moved in the tray, then place the second item you moved next to the nails."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Put wrench in the toolbox\ndef move_wrench_to_toolbox():\n    pick_and_place(\"wrench\", \"toolbox\")\n\n# 2: Place hammer in bottom left corner\ndef move_hammer_to_bottom_left_corner():\n    pick_and_place(\"hammer\", \"bottom left corner\")\n\n# 3: Move screwdriver to the middle\ndef move_screwdriver_to_middle():\n    pick_and_place(\"screwdriver\", \"middle\")\n\n# 4: Put third item moved in the tray\n# The third item I moved was the screwdriver\ndef move_screwdriver_to_tray():\n    if find(\"screwdriver\") != \"tray\":\n        pick_and_place(\"screwdriver\", \"tray\")\n    else:\n        print(\"Screwdriver already in tray, cannot move\")\n\n# 5: Place second item moved next to nails\n# The second item I moved was the hammer\ndef move_hammer_next_to_nails():\n    pick_and_place(\"hammer\", \"next to nails\")\n\nmove_wrench_to_toolbox()\nmove_hammer_to_bottom_left_corner()\nmove_screwdriver_to_middle()\nmove_screwdriver_to_tray()\nmove_hammer_next_to_nails()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[red_block, blue_block, green_block, yellow_block, tray, storage_box, assembly_area] \n Create python functions that do the following: first stack the red block on top of the blue block in the assembly area, then place the green block next to them, and finally put the yellow block in the storage box."
+    },
+    {
+      "from": "gpt",
+      "value": "def stack_red_on_blue():\n    # First, pick the blue block and place it in assembly area\n    pick_and_place(\"blue_block\", \"assembly_area\")\n    # Then, pick the red block and place it on top of blue block\n    pick_and_place(\"red_block\", \"on blue_block\")\n\ndef place_green_next_to_stack():\n    pick_and_place(\"green_block\", \"next to assembly_area\")\n\ndef put_yellow_in_storage():\n    if find(\"yellow_block\") != \"storage_box\":\n        pick_and_place(\"yellow_block\", \"storage_box\")\n    else:\n        print(\"yellow_block already in storage_box, cannot move\")\n\n# Execute in order\nstack_red_on_blue()\nplace_green_next_to_stack()\nput_yellow_in_storage()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[small_gear, medium_gear, large_gear, motor, battery, assembly_table, parts_bin, tray] \n Create python functions that do the following: assemble the gears by placing the large gear on the assembly table, then the medium gear on top of the large gear, and finally the small gear on top of the medium gear. After assembly, put the battery and motor next to the gear assembly."
+    },
+    {
+      "from": "gpt",
+      "value": "def place_large_gear():\n    pick_and_place(\"large_gear\", \"assembly_table\")\n\ndef place_medium_gear():\n    pick_and_place(\"medium_gear\", \"on large_gear\")\n\ndef place_small_gear():\n    pick_and_place(\"small_gear\", \"on medium_gear\")\n\ndef place_battery_and_motor():\n    pick_and_place(\"battery\", \"next to assembly_table\")\n    pick_and_place(\"motor\", \"next to assembly_table\")\n\n# Execute in order\nplace_large_gear()\nplace_medium_gear()\nplace_small_gear()\nplace_battery_and_motor()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[bottle, cap, label, filling_nozzle, conveyor_belt, packaging_area, quality_check_area] \n Create python functions that do the following: first fill the bottle using the filling nozzle, then place the cap on the bottle, and finally apply the label. Move the completed bottle to the packaging area, then move one sample bottle to the quality check area."
+    },
+    {
+      "from": "gpt",
+      "value": "def fill_bottle():\n    # Position bottle under filling nozzle\n    pick_and_place(\"bottle\", \"under filling_nozzle\")\n    # Simulate filling action\n    walk(\"filling_nozzle\")\n\ndef cap_bottle():\n    pick_and_place(\"cap\", \"on bottle\")\n\ndef apply_label():\n    pick_and_place(\"label\", \"on bottle\")\n\ndef move_to_packaging():\n    pick_and_place(\"bottle\", \"packaging_area\")\n\ndef move_sample_to_quality_check():\n    # Assuming we have multiple bottles, move one from packaging to quality check\n    if find(\"bottle\") == \"packaging_area\":\n        pick_and_place(\"bottle\", \"quality_check_area\")\n    else:\n        print(\"No bottle in packaging area to move to quality check\")\n\n# Execute in order\nfill_bottle()\ncap_bottle()\napply_label()\nmove_to_packaging()\nmove_sample_to_quality_check()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[dirty_plate, clean_plate, sponge, soap, drying_rack, sink, trash_bin, tray] \n Create python functions that do the following: first scrape any food scraps from the dirty plate into the trash bin, then wash it in the sink with soap and sponge, and finally place it on the drying rack. After washing, move a clean plate from the drying rack to the tray."
+    },
+    {
+      "from": "gpt",
+      "value": "def scrape_plate():\n    # Position plate over trash bin to scrape\n    pick_and_place(\"dirty_plate\", \"over trash_bin\")\n    # Simulate scraping motion\n    walk(\"dirty_plate\")\n\ndef wash_plate():\n    # Move plate to sink\n    pick_and_place(\"dirty_plate\", \"sink\")\n    # Apply soap\n    pick_and_place(\"soap\", \"on dirty_plate\")\n    # Use sponge\n    pick_and_place(\"sponge\", \"on dirty_plate\")\n\ndef dry_plate():\n    # Now it's clean, move to drying rack\n    pick_and_place(\"dirty_plate\", \"drying_rack\")\n    # Object name changes after cleaning\n    # For simplicity, we'll consider it's now clean_plate\n\ndef move_clean_plate_to_tray():\n    # Check if clean plate is on drying rack\n    if find(\"clean_plate\") == \"drying_rack\":\n        pick_and_place(\"clean_plate\", \"tray\")\n    else:\n        print(\"No clean plate on drying rack to move to tray\")\n\n# Execute in order\nscrape_plate()\nwash_plate()\ndry_plate()\nmove_clean_plate_to_tray()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[component_a, component_b, component_c, screwdriver, screws, assembly_jig, testing_station, finished_products_bin] \n Create python functions that do the following: assemble the components by first placing component_a in the assembly jig, then attaching component_b to it with screws using the screwdriver, then adding component_c. Test the assembly at the testing station, and if it passes, move it to the finished products bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def place_component_a():\n    pick_and_place(\"component_a\", \"assembly_jig\")\n\ndef attach_component_b():\n    # Position component_b on component_a\n    pick_and_place(\"component_b\", \"on component_a\")\n    # Use screwdriver to attach with screws\n    pick_and_place(\"screwdriver\", \"on component_b\")\n    pick_and_place(\"screws\", \"on component_b\")\n\ndef add_component_c():\n    pick_and_place(\"component_c\", \"on component_b\")\n\ndef test_and_finish():\n    # Move assembly to testing station\n    pick_and_place(\"component_a\", \"testing_station\")\n    # Simulate testing\n    walk(\"testing_station\")\n    # If test passes (simulated), move to finished products bin\n    # In reality, we'd have a conditional check\n    pick_and_place(\"component_a\", \"finished_products_bin\")\n\n# Execute in order\nplace_component_a()\nattach_component_b()\nadd_component_c()\ntest_and_finish()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[mail_letter, package, stamp, mailbox, sorting_table, outgoing_bin, tray] \n Create python functions that do the following: sort the mail by placing letters on the sorting table and packages in the outgoing bin. Apply a stamp to each letter, then place all stamped letters in the mailbox."
+    },
+    {
+      "from": "gpt",
+      "value": "def sort_mail():\n    # Sort letters to sorting table\n    if find(\"mail_letter\") != \"sorting_table\":\n        pick_and_place(\"mail_letter\", \"sorting_table\")\n    else:\n        print(\"mail_letter already on sorting_table, cannot move\")\n    \n    # Sort packages to outgoing bin\n    if find(\"package\") != \"outgoing_bin\":\n        pick_and_place(\"package\", \"outgoing_bin\")\n    else:\n        print(\"package already in outgoing_bin, cannot move\")\n\ndef stamp_letters():\n    # Apply stamp to each letter on sorting table\n    pick_and_place(\"stamp\", \"on mail_letter\")\n\ndef mail_letters():\n    # Move stamped letters to mailbox\n    if find(\"mail_letter\") == \"sorting_table\":\n        pick_and_place(\"mail_letter\", \"mailbox\")\n    else:\n        print(\"No letters on sorting table to mail\")\n\n# Execute in order\nsort_mail()\nstamp_letters()\nmail_letters()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[microscope_slide, sample, cover_slip, dye, microscope_stage, incubator, waste_container, tray] \n Create python functions that do the following: prepare a microscope slide by placing the sample on the slide, adding dye, and covering with a cover slip. Then place the prepared slide on the microscope stage for analysis. After analysis, move the used slide to the waste container."
+    },
+    {
+      "from": "gpt",
+      "value": "def prepare_slide():\n    # Place sample on slide\n    pick_and_place(\"sample\", \"on microscope_slide\")\n    # Add dye\n    pick_and_place(\"dye\", \"on sample\")\n    # Cover with cover slip\n    pick_and_place(\"cover_slip\", \"on microscope_slide\")\n\ndef place_on_microscope():\n    pick_and_place(\"microscope_slide\", \"microscope_stage\")\n\ndef analyze_and_dispose():\n    # Simulate analysis time\n    walk(\"microscope_stage\")\n    # Move to waste container after analysis\n    pick_and_place(\"microscope_slide\", \"waste_container\")\n\n# Execute in order\nprepare_slide()\nplace_on_microscope()\nanalyze_and_dispose()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[ingredient_a, ingredient_b, mixing_bowl, whisk, scale, oven_tray, oven, cooling_rack] \n Create python functions that do the following: first weigh ingredient_a on the scale and pour it into the mixing bowl. Then add ingredient_b to the bowl. Mix the ingredients using the whisk. Pour the mixture onto the oven tray and place it in the oven. After baking, move the tray to the cooling rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def weigh_ingredient_a():\n    # Weigh ingredient_a\n    pick_and_place(\"ingredient_a\", \"scale\")\n    # Then pour into mixing bowl\n    pick_and_place(\"ingredient_a\", \"mixing_bowl\")\n\ndef add_ingredient_b():\n    pick_and_place(\"ingredient_b\", \"mixing_bowl\")\n\ndef mix_ingredients():\n    pick_and_place(\"whisk\", \"in mixing_bowl\")\n    # Simulate mixing motion\n    walk(\"whisk\")\n\ndef bake():\n    # Pour mixture onto oven tray\n    pick_and_place(\"mixing_bowl\", \"over oven_tray\")\n    # Place tray in oven\n    pick_and_place(\"oven_tray\", \"oven\")\n    # Simulate baking\n    walk(\"oven\")\n\ndef cool():\n    # Move from oven to cooling rack\n    pick_and_place(\"oven_tray\", \"cooling_rack\")\n\n# Execute in order\nweigh_ingredient_a()\nadd_ingredient_b()\nmix_ingredients()\nbake()\ncool()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[circuit_board, resistor, capacitor, microchip, soldering_iron, solder, testing_probes, finished_boards_rack] \n Create python functions that do the following: assemble the circuit by placing the resistor and capacitor on the circuit board, then soldering them in place with the soldering iron and solder. Place the microchip on the board and solder it. Finally, test the circuit with the testing probes and if it works, place it on the finished boards rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def place_components():\n    # Place resistor on circuit board\n    pick_and_place(\"resistor\", \"on circuit_board\")\n    # Place capacitor on circuit board\n    pick_and_place(\"capacitor\", \"on circuit_board\")\n\ndef solder_components():\n    # Use soldering iron and solder on each component\n    pick_and_place(\"soldering_iron\", \"on resistor\")\n    pick_and_place(\"solder\", \"on resistor\")\n    pick_and_place(\"soldering_iron\", \"on capacitor\")\n    pick_and_place(\"solder\", \"on capacitor\")\n\ndef place_and_solder_microchip():\n    pick_and_place(\"microchip\", \"on circuit_board\")\n    pick_and_place(\"soldering_iron\", \"on microchip\")\n    pick_and_place(\"solder\", \"on microchip\")\n\ndef test_and_store():\n    # Test with probes\n    pick_and_place(\"testing_probes\", \"on circuit_board\")\n    # Simulate testing\n    walk(\"testing_probes\")\n    # If test passes, move to finished rack\n    pick_and_place(\"circuit_board\", \"finished_boards_rack\")\n\n# Execute in order\nplace_components()\nsolder_components()\nplace_and_solder_microchip()\ntest_and_store()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[wheel, axle, frame, motor, controller, assembly_bench, testing_zone, finished_robots_area] \n Create python functions that do the following: first assemble the robot by attaching the wheels to the axle, then mount the axle to the frame. Install the motor and controller on the frame. Test the robot in the testing zone, and if it passes, move it to the finished robots area."
+    },
+    {
+      "from": "gpt",
+      "value": "def attach_wheels_to_axle():\n    pick_and_place(\"wheel\", \"on axle\")\n    pick_and_place(\"wheel\", \"on axle\")  # Second wheel\n\ndef mount_axle_to_frame():\n    pick_and_place(\"axle\", \"on frame\")\n\ndef install_motor_and_controller():\n    pick_and_place(\"motor\", \"on frame\")\n    pick_and_place(\"controller\", \"on frame\")\n\ndef test_and_finish():\n    pick_and_place(\"frame\", \"testing_zone\")\n    walk(\"testing_zone\")\n    pick_and_place(\"frame\", \"finished_robots_area\")\n\nattach_wheels_to_axle()\nmount_axle_to_frame()\ninstall_motor_and_controller()\ntest_and_finish()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[base_part, arm_part, gripper, screws, screwdriver, calibration_stand, workbench, storage_shelf] \n Create python functions that do the following: assemble the robotic arm by connecting the arm part to the base part with screws, then attach the gripper to the arm. Calibrate the arm on the calibration stand, then move it to the storage shelf."
+    },
+    {
+      "from": "gpt",
+      "value": "def connect_arm_to_base():\n    pick_and_place(\"arm_part\", \"on base_part\")\n    pick_and_place(\"screws\", \"on arm_part\")\n    pick_and_place(\"screwdriver\", \"on screws\")\n\ndef attach_gripper():\n    pick_and_place(\"gripper\", \"on arm_part\")\n    pick_and_place(\"screws\", \"on gripper\")\n    pick_and_place(\"screwdriver\", \"on screws\")\n\ndef calibrate_arm():\n    pick_and_place(\"base_part\", \"calibration_stand\")\n    walk(\"calibration_stand\")\n\ndef store_arm():\n    pick_and_place(\"base_part\", \"storage_shelf\")\n\nconnect_arm_to_base()\nattach_gripper()\ncalibrate_arm()\nstore_arm()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[raw_material, cutter, grinder, polisher, quality_scanner, conveyor_start, conveyor_end, finished_parts_bin] \n Create python functions that do the following: process the raw material by first cutting it with the cutter, then grinding it with the grinder, and polishing it with the polisher. Scan it with the quality scanner, and if it passes, move it to the finished parts bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def cut_material():\n    pick_and_place(\"raw_material\", \"conveyor_start\")\n    pick_and_place(\"cutter\", \"on raw_material\")\n\ndef grind_material():\n    pick_and_place(\"grinder\", \"on raw_material\")\n\ndef polish_material():\n    pick_and_place(\"polisher\", \"on raw_material\")\n\ndef scan_and_store():\n    pick_and_place(\"quality_scanner\", \"on raw_material\")\n    walk(\"quality_scanner\")\n    pick_and_place(\"raw_material\", \"finished_parts_bin\")\n\ncut_material()\ngrind_material()\npolish_material()\nscan_and_store()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[sensor, wiring_harness, mounting_bracket, controller_box, sealant, assembly_table, testing_chamber, shipping_crate] \n Create python functions that do the following: assemble the sensor system by mounting the sensor to the bracket, connecting the wiring harness, installing it in the controller box, and applying sealant. Test it in the testing chamber, then pack it in the shipping crate."
+    },
+    {
+      "from": "gpt",
+      "value": "def mount_sensor():\n    pick_and_place(\"sensor\", \"on mounting_bracket\")\n\ndef connect_wiring():\n    pick_and_place(\"wiring_harness\", \"on sensor\")\n\ndef install_in_controller():\n    pick_and_place(\"mounting_bracket\", \"in controller_box\")\n\ndef apply_sealant():\n    pick_and_place(\"sealant\", \"on controller_box\")\n\ndef test_and_pack():\n    pick_and_place(\"controller_box\", \"testing_chamber\")\n    walk(\"testing_chamber\")\n    pick_and_place(\"controller_box\", \"shipping_crate\")\n\nmount_sensor()\nconnect_wiring()\ninstall_in_controller()\napply_sealant()\ntest_and_pack()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[pallet, box_a, box_b, box_c, stretch_wrap, forklift_zone, weighing_station, shipping_dock] \n Create python functions that do the following: load boxes onto the pallet in order: box_a, box_b, then box_c. Wrap the loaded pallet with stretch wrap, weigh it at the weighing station, then move it to the shipping dock."
+    },
+    {
+      "from": "gpt",
+      "value": "def load_pallet():\n    pick_and_place(\"pallet\", \"forklift_zone\")\n    pick_and_place(\"box_a\", \"on pallet\")\n    pick_and_place(\"box_b\", \"on box_a\")\n    pick_and_place(\"box_c\", \"on box_b\")\n\ndef wrap_pallet():\n    pick_and_place(\"stretch_wrap\", \"around pallet\")\n\ndef weigh_and_ship():\n    pick_and_place(\"pallet\", \"weighing_station\")\n    walk(\"weighing_station\")\n    pick_and_place(\"pallet\", \"shipping_dock\")\n\nload_pallet()\nwrap_pallet()\nweigh_and_ship()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[liquid_a, liquid_b, mixing_chamber, heater, stirrer, temperature_sensor, reaction_vessel, storage_tank] \n Create python functions that do the following: create a chemical mixture by adding liquid_a to the mixing chamber, then liquid_b. Heat the mixture with the heater while stirring with the stirrer. Monitor with the temperature sensor, then transfer to the reaction vessel."
+    },
+    {
+      "from": "gpt",
+      "value": "def add_liquids():\n    pick_and_place(\"liquid_a\", \"in mixing_chamber\")\n    pick_and_place(\"liquid_b\", \"in mixing_chamber\")\n\ndef heat_and_stir():\n    pick_and_place(\"heater\", \"under mixing_chamber\")\n    pick_and_place(\"stirrer\", \"in mixing_chamber\")\n\ndef monitor_and_transfer():\n    pick_and_place(\"temperature_sensor\", \"in mixing_chamber\")\n    walk(\"temperature_sensor\")\n    pick_and_place(\"mixing_chamber\", \"over reaction_vessel\")\n\nadd_liquids()\nheat_and_stir()\nmonitor_and_transfer()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[pcb, smd_component, soldering_paste, pick_and_place_head, reflow_oven, inspection_camera, conveyor, finished_pcb_rack] \n Create python functions that do the following: apply soldering paste to the PCB, place SMD components using the pick and place head, run through reflow oven, inspect with camera, and place on finished rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def apply_paste():\n    pick_and_place(\"pcb\", \"conveyor\")\n    pick_and_place(\"soldering_paste\", \"on pcb\")\n\ndef place_components():\n    pick_and_place(\"pick_and_place_head\", \"on pcb\")\n    pick_and_place(\"smd_component\", \"on pcb\")\n\ndef reflow_and_inspect():\n    pick_and_place(\"pcb\", \"reflow_oven\")\n    walk(\"reflow_oven\")\n    pick_and_place(\"inspection_camera\", \"over pcb\")\n\ndef store_pcb():\n    pick_and_place(\"pcb\", \"finished_pcb_rack\")\n\napply_paste()\nplace_components()\nreflow_and_inspect()\nstore_pcb()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[blade, handle, screws, screwdriver, sharpener, testing_block, packaging_box, shipping_area] \n Create python functions that do the following: assemble the knife by attaching the blade to the handle with screws. Sharpen the blade, test it on the testing block, package it in the box, and move to shipping area."
+    },
+    {
+      "from": "gpt",
+      "value": "def assemble_knife():\n    pick_and_place(\"blade\", \"on handle\")\n    pick_and_place(\"screws\", \"on blade\")\n    pick_and_place(\"screwdriver\", \"on screws\")\n\ndef sharpen_blade():\n    pick_and_place(\"sharpener\", \"on blade\")\n\ndef test_and_package():\n    pick_and_place(\"blade\", \"on testing_block\")\n    walk(\"testing_block\")\n    pick_and_place(\"handle\", \"in packaging_box\")\n\ndef ship():\n    pick_and_place(\"packaging_box\", \"shipping_area\")\n\nassemble_knife()\nsharpen_blade()\ntest_and_package()\nship()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[optical_lens, lens_holder, adjustment_screws, alignment_target, cleaning_cloth, calibration_bench, inspection_station, storage_case] \n Create python functions that do the following: mount the optical lens in its holder, adjust with screws, clean with cloth, align using the target, calibrate on bench, inspect, and store in case."
+    },
+    {
+      "from": "gpt",
+      "value": "def mount_lens():\n    pick_and_place(\"optical_lens\", \"in lens_holder\")\n\ndef adjust_and_clean():\n    pick_and_place(\"adjustment_screws\", \"on lens_holder\")\n    pick_and_place(\"cleaning_cloth\", \"on optical_lens\")\n\ndef align_and_calibrate():\n    pick_and_place(\"lens_holder\", \"on alignment_target\")\n    walk(\"alignment_target\")\n    pick_and_place(\"lens_holder\", \"calibration_bench\")\n\ndef inspect_and_store():\n    pick_and_place(\"lens_holder\", \"inspection_station\")\n    walk(\"inspection_station\")\n    pick_and_place(\"lens_holder\", \"in storage_case\")\n\nmount_lens()\nadjust_and_clean()\nalign_and_calibrate()\ninspect_and_store()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[plant_seed, soil, pot, water, fertilizer, grow_light, germination_tray, greenhouse_shelf] \n Create python functions that do the following: plant automation - fill pot with soil, plant seed, water, add fertilizer, place under grow light on germination tray, then move to greenhouse shelf."
+    },
+    {
+      "from": "gpt",
+      "value": "def fill_pot():\n    pick_and_place(\"soil\", \"in pot\")\n\ndef plant_seed():\n    pick_and_place(\"plant_seed\", \"in soil\")\n\ndef water_and_fertilize():\n    pick_and_place(\"water\", \"on soil\")\n    pick_and_place(\"fertilizer\", \"on soil\")\n\ndef place_to_germinate():\n    pick_and_place(\"pot\", \"on germination_tray\")\n    pick_and_place(\"grow_light\", \"over pot\")\n\ndef move_to_greenhouse():\n    pick_and_place(\"pot\", \"greenhouse_shelf\")\n\nfill_pot()\nplant_seed()\nwater_and_fertilize()\nplace_to_germinate()\nmove_to_greenhouse()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[raw_metal, forge, hammer, anvil, quench_tank, tempering_oven, grinding_wheel, finished_parts_rack] \n Create python functions that do the following: blacksmith automation - heat metal in forge, hammer on anvil, quench in tank, temper in oven, grind on wheel, place on rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def heat_metal():\n    pick_and_place(\"raw_metal\", \"in forge\")\n    walk(\"forge\")\n\ndef hammer_shape():\n    pick_and_place(\"raw_metal\", \"on anvil\")\n    pick_and_place(\"hammer\", \"on raw_metal\")\n\ndef quench_and_temper():\n    pick_and_place(\"raw_metal\", \"in quench_tank\")\n    pick_and_place(\"raw_metal\", \"in tempering_oven\")\n\ndef grind_finish():\n    pick_and_place(\"raw_metal\", \"on grinding_wheel\")\n    walk(\"grinding_wheel\")\n\ndef store_part():\n    pick_and_place(\"raw_metal\", \"on finished_parts_rack\")\n\nheat_metal()\nhammer_shape()\nquench_and_temper()\ngrind_finish()\nstore_part()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[battery_cell, housing, terminals, insulator, welder, charge_tester, labeling_machine, packaging_line] \n Create python functions that do the following: battery assembly - place cell in housing, add terminals and insulator, weld terminals, test charge, label, and send to packaging."
+    },
+    {
+      "from": "gpt",
+      "value": "def assemble_battery():\n    pick_and_place(\"battery_cell\", \"in housing\")\n    pick_and_place(\"terminals\", \"on battery_cell\")\n    pick_and_place(\"insulator\", \"on terminals\")\n\ndef weld_and_test():\n    pick_and_place(\"welder\", \"on terminals\")\n    pick_and_place(\"housing\", \"on charge_tester\")\n    walk(\"charge_tester\")\n\ndef label_and_package():\n    pick_and_place(\"labeling_machine\", \"on housing\")\n    pick_and_place(\"housing\", \"packaging_line\")\n\nassemble_battery()\nweld_and_test()\nlabel_and_package()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[fabric_piece, thread_spool, needle, scissors, iron, mannequin, quality_check_stand, finished_garments_rack] \n Create python functions that do the following: automated sewing - cut fabric, thread needle, sew pieces together, iron garment, fit on mannequin, quality check, hang on rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def prepare_materials():\n    pick_and_place(\"scissors\", \"on fabric_piece\")\n    pick_and_place(\"thread_spool\", \"on needle\")\n\ndef sew_and_finish():\n    pick_and_place(\"needle\", \"on fabric_piece\")\n    pick_and_place(\"iron\", \"on fabric_piece\")\n\ndef fit_and_check():\n    pick_and_place(\"fabric_piece\", \"on mannequin\")\n    pick_and_place(\"fabric_piece\", \"quality_check_stand\")\n    walk(\"quality_check_stand\")\n\ndef store_garment():\n    pick_and_place(\"fabric_piece\", \"on finished_garments_rack\")\n\nprepare_materials()\nsew_and_finish()\nfit_and_check()\nstore_garment()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[glass_pane, frame, sealant, cleaning_solution, squeegee, inspection_light, assembly_jig, shipping_pallet] \n Create python functions that do the following: window assembly - place glass in frame, apply sealant, clean with solution and squeegee, inspect with light, and load onto pallet."
+    },
+    {
+      "from": "gpt",
+      "value": "def assemble_window():\n    pick_and_place(\"glass_pane\", \"in frame\")\n    pick_and_place(\"sealant\", \"around glass_pane\")\n\ndef clean_and_inspect():\n    pick_and_place(\"cleaning_solution\", \"on glass_pane\")\n    pick_and_place(\"squeegee\", \"on glass_pane\")\n    pick_and_place(\"inspection_light\", \"over glass_pane\")\n    walk(\"inspection_light\")\n\ndef prepare_for_shipping():\n    pick_and_place(\"frame\", \"shipping_pallet\")\n\nassemble_window()\nclean_and_inspect()\nprepare_for_shipping()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[medication_bottle, pills, cotton_filler, label, cap, verification_scanner, sorting_conveyor, pharmacy_bin] \n Create python functions that do the following: pharmacy automation - fill bottle with pills, add cotton filler, apply label, cap bottle, verify with scanner, sort to pharmacy bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def fill_bottle():\n    pick_and_place(\"pills\", \"in medication_bottle\")\n    pick_and_place(\"cotton_filler\", \"in medication_bottle\")\n\ndef seal_and_label():\n    pick_and_place(\"cap\", \"on medication_bottle\")\n    pick_and_place(\"label\", \"on medication_bottle\")\n\ndef verify_and_sort():\n    pick_and_place(\"medication_bottle\", \"on verification_scanner\")\n    walk(\"verification_scanner\")\n    pick_and_place(\"medication_bottle\", \"pharmacy_bin\")\n\nfill_bottle()\nseal_and_label()\nverify_and_sort()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[engine_block, pistons, crankshaft, valves, gaskets, assembly_torque_tool, dynamometer, finished_engines_rack] \n Create python functions that do the following: engine assembly - install pistons in block, add crankshaft, install valves with gaskets, torque to spec, test on dynamometer, store on rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def install_pistons():\n    pick_and_place(\"pistons\", \"in engine_block\")\n\ndef add_crankshaft():\n    pick_and_place(\"crankshaft\", \"in engine_block\")\n\ndef install_valves():\n    pick_and_place(\"gaskets\", \"on engine_block\")\n    pick_and_place(\"valves\", \"in engine_block\")\n\ndef torque_and_test():\n    pick_and_place(\"assembly_torque_tool\", \"on engine_block\")\n    pick_and_place(\"engine_block\", \"on dynamometer\")\n    walk(\"dynamometer\")\n\ndef store_engine():\n    pick_and_place(\"engine_block\", \"on finished_engines_rack\")\n\ninstall_pistons()\nadd_crankshaft()\ninstall_valves()\ntorque_and_test()\nstore_engine()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[solar_cell, backing_sheet, encapsulant, frame, junction_box, lamination_machine, testing_station, packaging_area] \n Create python functions that do the following: solar panel production - layer cell, encapsulant, and backing sheet, laminate, add frame and junction box, test, package."
+    },
+    {
+      "from": "gpt",
+      "value": "def layer_materials():\n    pick_and_place(\"backing_sheet\", \"lamination_machine\")\n    pick_and_place(\"encapsulant\", \"on backing_sheet\")\n    pick_and_place(\"solar_cell\", \"on encapsulant\")\n\ndef laminate_and_frame():\n    walk(\"lamination_machine\")\n    pick_and_place(\"frame\", \"around backing_sheet\")\n    pick_and_place(\"junction_box\", \"on backing_sheet\")\n\ndef test_and_package():\n    pick_and_place(\"backing_sheet\", \"testing_station\")\n    walk(\"testing_station\")\n    pick_and_place(\"backing_sheet\", \"packaging_area\")\n\nlayer_materials()\nlaminate_and_frame()\ntest_and_package()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[circuit_chip, heat_sink, thermal_paste, mounting_clips, burn_in_oven, performance_tester, anti_static_bag, shipping_box] \n Create python functions that do the following: chip packaging - apply thermal paste, attach heat sink with clips, burn-in test, performance test, bag in anti-static, box for shipping."
+    },
+    {
+      "from": "gpt",
+      "value": "def attach_cooling():\n    pick_and_place(\"thermal_paste\", \"on circuit_chip\")\n    pick_and_place(\"heat_sink\", \"on circuit_chip\")\n    pick_and_place(\"mounting_clips\", \"on heat_sink\")\n\ndef test_chip():\n    pick_and_place(\"circuit_chip\", \"in burn_in_oven\")\n    walk(\"burn_in_oven\")\n    pick_and_place(\"circuit_chip\", \"on performance_tester\")\n    walk(\"performance_tester\")\n\ndef package_for_shipping():\n    pick_and_place(\"circuit_chip\", \"in anti_static_bag\")\n    pick_and_place(\"anti_static_bag\", \"in shipping_box\")\n\nattach_cooling()\ntest_chip()\npackage_for_shipping()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[raw_dough, sauce, cheese, toppings, pizza_peel, pizza_oven, cutting_board, warming_rack] \n Create python functions that do the following: pizza making - spread sauce on dough, add cheese, arrange toppings, transfer to oven with peel, bake, cut on board, move to warming rack."
+    },
+    {
+      "from": "gpt",
+      "value": "def prepare_pizza():\n    pick_and_place(\"sauce\", \"on raw_dough\")\n    pick_and_place(\"cheese\", \"on raw_dough\")\n    pick_and_place(\"toppings\", \"on raw_dough\")\n\ndef bake_and_cut():\n    pick_and_place(\"pizza_peel\", \"under raw_dough\")\n    pick_and_place(\"raw_dough\", \"in pizza_oven\")\n    walk(\"pizza_oven\")\n    pick_and_place(\"raw_dough\", \"on cutting_board\")\n\ndef serve():\n    pick_and_place(\"raw_dough\", \"on warming_rack\")\n\nprepare_pizza()\nbake_and_cut()\nserve()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[book_pages, cover, binding_glue, press, trimmer, quality_inspection_table, dust_jacket, bookstore_shelf] \n Create python functions that do the following: book binding - apply glue to pages, attach cover, press, trim edges, inspect, add dust jacket, place on shelf."
+    },
+    {
+      "from": "gpt",
+      "value": "def bind_book():\n    pick_and_place(\"binding_glue\", \"on book_pages\")\n    pick_and_place(\"cover\", \"on book_pages\")\n\ndef finish_book():\n    pick_and_place(\"cover\", \"in press\")\n    walk(\"press\")\n    pick_and_place(\"trimmer\", \"around cover\")\n\ndef finalize():\n    pick_and_place(\"cover\", \"quality_inspection_table\")\n    walk(\"quality_inspection_table\")\n    pick_and_place(\"dust_jacket\", \"on cover\")\n    pick_and_place(\"cover\", \"bookstore_shelf\")\n\nbind_book()\nfinish_book()\nfinalize()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[watch_movement, watch_face, hands, crystal, case, strap, timing_machine, display_case] \n Create python functions that do the following: watch assembly - install movement in case, attach face and hands, add crystal, attach strap, calibrate on timing machine, display."
+    },
+    {
+      "from": "gpt",
+      "value": "def assemble_watch():\n    pick_and_place(\"watch_movement\", \"in case\")\n    pick_and_place(\"watch_face\", \"on watch_movement\")\n    pick_and_place(\"hands\", \"on watch_face\")\n\ndef finish_watch():\n    pick_and_place(\"crystal\", \"on case\")\n    pick_and_place(\"strap\", \"on case\")\n\ndef calibrate_and_display():\n    pick_and_place(\"case\", \"on timing_machine\")\n    walk(\"timing_machine\")\n    pick_and_place(\"case\", \"in display_case\")\n\nassemble_watch()\nfinish_watch()\ncalibrate_and_display()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[drill(power_tool), saw(power_tool), screwdriver(manual_tool), hammer(manual_tool), tape_measure(manual_tool), power_rack, tool_drawer] \n Create python functions that do the following: move all power tools to the power rack and all manual tools to the tool drawer."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_workshop_tools():\n    # Define categories\n    power_tools = [\"drill\", \"saw\"]\n    manual_tools = [\"screwdriver\", \"hammer\", \"tape_measure\"]\n    \n    # Move power tools\n    for tool in power_tools:\n        if find(tool) != \"power_rack\":\n            pick_and_place(tool, \"power_rack\")\n    \n    # Move manual tools\n    for tool in manual_tools:\n        if find(tool) != \"tool_drawer\":\n            pick_and_place(tool, \"tool_drawer\")\n\norganize_workshop_tools()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[laptop, mouse, phone, charger, glasses, tray, bag] \n Create python functions that do the following: place the laptop in the bag, then put the charger next to the laptop, and move the phone to the middle. put the first item you moved in the tray and place the second item you moved next to the glasses."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Place laptop in bag\ndef move_laptop_to_bag():\n    pick_and_place(\"laptop\", \"bag\")\n\n# 2: Put charger next to laptop\ndef move_charger_near_laptop():\n    pick_and_place(\"charger\", \"next to laptop\")\n\n# 3: Move phone to middle\ndef move_phone_to_middle():\n    pick_and_place(\"phone\", \"middle\")\n\n# 4: Put first item (laptop) in tray\ndef move_laptop_to_tray():\n    pick_and_place(\"laptop\", \"tray\")\n\n# 5: Place second item (charger) next to glasses\ndef move_charger_near_glasses():\n    pick_and_place(\"charger\", \"next to glasses\")\n\nmove_laptop_to_bag()\nmove_charger_near_laptop()\nmove_phone_to_middle()\nmove_laptop_to_tray()\nmove_charger_near_glasses()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[yogurt(chilled), milk(chilled), cereal(dry), flour(dry), pasta(dry), refrigerator, pantry] \n Create python functions that do the following: move all chilled items to the refrigerator and all dry goods to the pantry."
+    },
+    {
+      "from": "gpt",
+      "value": "def sort_groceries():\n    chilled_items = [\"yogurt\", \"milk\"]\n    dry_goods = [\"cereal\", \"flour\", \"pasta\"]\n    \n    for item in chilled_items:\n        if find(item) != \"refrigerator\":\n            pick_and_place(item, \"refrigerator\")\n            \n    for item in dry_goods:\n        if find(item) != \"pantry\":\n            pick_and_place(item, \"pantry\")\n\nsort_groceries()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[remote, controller, headset, batteries, cable, tray, bin] \n Create python functions that do the following: put the headset in the bin, then place the remote in the top right corner, and move the controller to the middle. place the third item you moved in the tray and put the second item you moved next to the batteries."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Put headset in bin\ndef move_headset_to_bin():\n    pick_and_place(\"headset\", \"bin\")\n\n# 2: Place remote in top right corner\ndef move_remote_top_right():\n    pick_and_place(\"remote\", \"top right corner\")\n\n# 3: Move controller to middle\ndef move_controller_middle():\n    pick_and_place(\"controller\", \"middle\")\n\n# 4: Place third item (controller) in tray\ndef move_controller_to_tray():\n    pick_and_place(\"controller\", \"tray\")\n\n# 5: Put second item (remote) next to batteries\ndef move_remote_near_batteries():\n    pick_and_place(\"remote\", \"next to batteries\")\n\nmove_headset_to_bin()\nmove_remote_top_right()\nmove_controller_middle()\nmove_controller_to_tray()\nmove_remote_near_batteries()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[rose(flower), lily(flower), cactus(succulent), aloe(succulent), orchid(flower), flower_vase, sunny_ledge] \n Create python functions that do the following: move all flowers to the flower vase and all succulents to the sunny ledge."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_plants():\n    flowers = [\"rose\", \"lily\", \"orchid\"]\n    succulents = [\"cactus\", \"aloe\"]\n    \n    for f in flowers:\n        pick_and_place(f, \"flower_vase\")\n    for s in succulents:\n        pick_and_place(s, \"sunny_ledge\")\n\norganize_plants()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[soap, towel, sponge, razor, lotion, tray, shelf] \n Create python functions that do the following: place the sponge on the shelf, then put the soap next to the sponge, and move the lotion to the middle. put the first item you moved in the tray and place the third item you moved next to the towel."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Place sponge on shelf\ndef step_1():\n    pick_and_place(\"sponge\", \"shelf\")\n\n# 2: Put soap next to sponge\ndef step_2():\n    pick_and_place(\"soap\", \"next to sponge\")\n\n# 3: Move lotion to middle\ndef step_3():\n    pick_and_place(\"lotion\", \"middle\")\n\n# 4: First item (sponge) to tray\ndef step_4():\n    pick_and_place(\"sponge\", \"tray\")\n\n# 5: Third item (lotion) next to towel\ndef step_5():\n    pick_and_place(\"lotion\", \"next to towel\")\n\nstep_1()\nstep_2()\nstep_3()\nstep_4()\nstep_5()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[pen(blue), marker(blue), pencil(red), crayon(red), highlighter(blue), blue_bin, red_bin] \n Create python functions that do the following: move all blue items to the blue bin and all red items to the red bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def sort_by_color():\n    blue_items = [\"pen\", \"marker\", \"highlighter\"]\n    red_items = [\"pencil\", \"crayon\"]\n    \n    for item in blue_items:\n        pick_and_place(item, \"blue_bin\")\n    for item in red_items:\n        pick_and_place(item, \"red_bin\")\n\nsort_by_color()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[boots, slippers, hat, scarf, gloves, tray, rack] \n Create python functions that do the following: put the boots on the rack, then place the scarf in the top left corner, and move the hat to the middle. put the second item you moved in the tray and place the third item you moved next to the slippers."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Boots on rack\ndef move_boots():\n    pick_and_place(\"boots\", \"rack\")\n\n# 2: Scarf top left\ndef move_scarf():\n    pick_and_place(\"scarf\", \"top left corner\")\n\n# 3: Hat middle\ndef move_hat():\n    pick_and_place(\"hat\", \"middle\")\n\n# 4: Second item (scarf) to tray\ndef scarf_to_tray():\n    pick_and_place(\"scarf\", \"tray\")\n\n# 5: Third item (hat) next to slippers\ndef hat_near_slippers():\n    pick_and_place(\"hat\", \"next to slippers\")\n\nmove_boots()\nmove_scarf()\nmove_hat()\nscarf_to_tray()\nhat_near_slippers()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[plate(ceramic), bowl(ceramic), cup(glass), wine_glass(glass), mug(ceramic), glass_shelf, ceramic_cupboard] \n Create python functions that do the following: move all glass items to the glass shelf and all ceramic items to the ceramic cupboard."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_kitchenware():\n    glassware = [\"cup\", \"wine_glass\"]\n    ceramics = [\"plate\", \"bowl\", \"mug\"]\n    \n    for g in glassware:\n        pick_and_place(g, \"glass_shelf\")\n    for c in ceramics:\n        pick_and_place(c, \"ceramic_cupboard\")\n\norganize_kitchenware()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[battery, bulb, wire, switch, fuse, tray, toolkit] \n Create python functions that do the following: place the battery in the toolkit, then put the wire next to the battery, and move the bulb to the bottom left corner. put the third item you moved in the tray and place the first item you moved next to the switch."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Battery in toolkit\ndef step_1():\n    pick_and_place(\"battery\", \"toolkit\")\n\n# 2: Wire next to battery\ndef step_2():\n    pick_and_place(\"wire\", \"next to battery\")\n\n# 3: Bulb bottom left\ndef step_3():\n    pick_and_place(\"bulb\", \"bottom left corner\")\n\n# 4: Third item (bulb) in tray\ndef step_4():\n    pick_and_place(\"bulb\", \"tray\")\n\n# 5: First item (battery) next to switch\ndef step_5():\n    pick_and_place(\"battery\", \"next to switch\")\n\nstep_1()\nstep_2()\nstep_3()\nstep_4()\nstep_5()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[pill(medication), syrup(medication), bandage(aid), gauze(aid), tape(aid), med_box, aid_kit] \n Create python functions that do the following: move all medication to the med box and all first aid supplies to the aid kit."
+    },
+    {
+      "from": "gpt",
+      "value": "def sort_medical_supplies():\n    meds = [\"pill\", \"syrup\"]\n    aid = [\"bandage\", \"gauze\", \"tape\"]\n    \n    for m in meds:\n        pick_and_place(m, \"med_box\")\n    for a in aid:\n        pick_and_place(a, \"aid_kit\")\n\nsort_medical_supplies()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[key, wallet, coin, card, ring, tray, dish] \n Create python functions that do the following: place the key in the dish, then put the ring next to the key, and move the wallet to the middle. put the first item you moved in the tray and place the second item you moved next to the coin."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Key in dish\ndef move_key():\n    pick_and_place(\"key\", \"dish\")\n\n# 2: Ring next to key\ndef move_ring():\n    pick_and_place(\"ring\", \"next to key\")\n\n# 3: Wallet middle\ndef move_wallet():\n    pick_and_place(\"wallet\", \"middle\")\n\n# 4: First item (key) to tray\ndef key_to_tray():\n    pick_and_place(\"key\", \"tray\")\n\n# 5: Second item (ring) next to coin\ndef ring_near_coin():\n    pick_and_place(\"ring\", \"next to coin\")\n\nmove_key()\nmove_ring()\nmove_wallet()\nkey_to_tray()\nring_near_coin()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[apple(fruit), orange(fruit), carrot(veg), pea(veg), corn(veg), fruit_stand, veg_bin] \n Create python functions that do the following: move all fruit to the fruit stand and all veg to the veg bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_produce():\n    fruits = [\"apple\", \"orange\"]\n    vegs = [\"carrot\", \"pea\", \"corn\"]\n    \n    for f in fruits:\n        pick_and_place(f, \"fruit_stand\")\n    for v in vegs:\n        pick_and_place(v, \"veg_bin\")\n\norganize_produce()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[brush, comb, mirror, clip, spray, tray, caddy] \n Create python functions that do the following: put the brush in the caddy, then place the mirror in the top right corner, and move the comb to the middle. place the third item you moved in the tray and put the second item you moved next to the clip."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Brush in caddy\ndef step_1():\n    pick_and_place(\"brush\", \"caddy\")\n\n# 2: Mirror top right\ndef step_2():\n    pick_and_place(\"mirror\", \"top right corner\")\n\n# 3: Comb middle\ndef step_3():\n    pick_and_place(\"comb\", \"middle\")\n\n# 4: Third item (comb) in tray\ndef step_4():\n    pick_and_place(\"comb\", \"tray\")\n\n# 5: Second item (mirror) next to clip\ndef step_5():\n    pick_and_place(\"mirror\", \"next to clip\")\n\nstep_1()\nstep_2()\nstep_3()\nstep_4()\nstep_5()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[shirt(cotton), towel(cotton), sweater(wool), scarf(wool), socks(cotton), cotton_basket, wool_shelf] \n Create python functions that do the following: move all cotton items to the cotton basket and all wool items to the wool shelf."
+    },
+    {
+      "from": "gpt",
+      "value": "def separate_fabrics():\n    cottons = [\"shirt\", \"towel\", \"socks\"]\n    wools = [\"sweater\", \"scarf\"]\n    \n    for c in cottons:\n        pick_and_place(c, \"cotton_basket\")\n    for w in wools:\n        pick_and_place(w, \"wool_shelf\")\n\nseparate_fabrics()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[book, pen, lamp, ruler, eraser, tray, shelf] \n Create python functions that do the following: place the book on the shelf, then put the pen next to the book, and move the lamp to the middle. put the first item you moved in the tray and place the third item you moved next to the ruler."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Book on shelf\ndef step_1():\n    pick_and_place(\"book\", \"shelf\")\n\n# 2: Pen next to book\ndef step_2():\n    pick_and_place(\"pen\", \"next to book\")\n\n# 3: Lamp middle\ndef step_3():\n    pick_and_place(\"lamp\", \"middle\")\n\n# 4: First item (book) in tray\ndef step_4():\n    pick_and_place(\"book\", \"tray\")\n\n# 5: Third item (lamp) next to ruler\ndef step_5():\n    pick_and_place(\"lamp\", \"next to ruler\")\n\nstep_1()\nstep_2()\nstep_3()\nstep_4()\nstep_5()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[screw(metal), nail(metal), block(wood), stick(wood), hinge(metal), metal_bin, wood_bin] \n Create python functions that do the following: move all metal objects to the metal bin and all wooden objects to the wood bin."
+    },
+    {
+      "from": "gpt",
+      "value": "def sort_materials():\n    metals = [\"screw\", \"nail\", \"hinge\"]\n    woods = [\"block\", \"stick\"]\n    \n    for m in metals:\n        pick_and_place(m, \"metal_bin\")\n    for w in woods:\n        pick_and_place(w, \"wood_bin\")\n\nsort_materials()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[mug, tea, sugar, spoon, plate, tray, counter] \n Create python functions that do the following: place the mug on the counter, then put the tea in the mug, and move the sugar to the top left corner. put the second item you moved in the tray and place the third item you moved next to the plate."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Mug on counter\ndef move_mug():\n    pick_and_place(\"mug\", \"counter\")\n\n# 2: Tea in mug\ndef move_tea():\n    pick_and_place(\"tea\", \"in mug\")\n\n# 3: Sugar top left\ndef move_sugar():\n    pick_and_place(\"sugar\", \"top left corner\")\n\n# 4: Second item (tea) to tray\ndef tea_to_tray():\n    pick_and_place(\"tea\", \"tray\")\n\n# 5: Third item (sugar) next to plate\ndef sugar_near_plate():\n    pick_and_place(\"sugar\", \"next to plate\")\n\nmove_mug()\nmove_tea()\nmove_sugar()\ntea_to_tray()\nsugar_near_plate()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[mouse(tech), keyboard(tech), pad(tech), drink(snack), chips(snack), tech_desk, snack_bar] \n Create python functions that do the following: move all tech items to the tech desk and all snacks to the snack bar."
+    },
+    {
+      "from": "gpt",
+      "value": "def organize_gaming_area():\n    tech = [\"mouse\", \"keyboard\", \"pad\"]\n    snacks = [\"drink\", \"chips\"]\n    \n    for t in tech:\n        pick_and_place(t, \"tech_desk\")\n    for s in snacks:\n        pick_and_place(s, \"snack_bar\")\n\norganize_gaming_area()"
+    }
+  ],
+  [
+    {
+      "from": "human",
+      "value": "from actions import walk(obj), pick_and_place(obj, pos), open(obj), find(obj) \n objects=[stapler, paper, clip, folder, stamp, tray, bin] \n Create python functions that do the following: put the stapler in the bin, then place the folder in the middle, and move the stamp to the bottom right corner. place the first item you moved in the tray and put the second item you moved next to the paper."
+    },
+    {
+      "from": "gpt",
+      "value": "# 1: Stapler in bin\ndef move_stapler():\n    pick_and_place(\"stapler\", \"bin\")\n\n# 2: Folder middle\ndef move_folder():\n    pick_and_place(\"folder\", \"middle\")\n\n# 3: Stamp bottom right\ndef move_stamp():\n    pick_and_place(\"stamp\", \"bottom right corner\")\n\n# 4: First item (stapler) to tray\ndef stapler_to_tray():\n    pick_and_place(\"stapler\", \"tray\")\n\n# 5: Second item (folder) next to paper\ndef folder_near_paper():\n    pick_and_place(\"folder\", \"next to paper\")\n\nmove_stapler()\nmove_folder()\nmove_stamp()\nstapler_to_tray()\nfolder_near_paper()"
+    }
+  ]
+]

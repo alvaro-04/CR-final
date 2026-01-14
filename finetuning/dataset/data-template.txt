@@ -1,0 +1,14 @@
+[
+    {
+    "from" : "human",
+    "value" : ""
+
+},
+{
+    "from" : "gpt",
+    "value" : "response"
+}
+]
+
+
+// from actions import walk <obj> grab <obj> pick_and_place <obj> objects=[sink, apple, salmon, paper, pencil, tray, wineglass]]
