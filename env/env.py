@@ -27,7 +27,7 @@ IMG_SIZE = 448
 TARGET_LOCATIONS = {
   'top left corner':     (0.35,        -0.85,       1.0),
   'top side':            (0,           -0.85,       1.0),
-  'top right corner':    (-0.3,        -0.85,       1.0),
+  'sink':    (-0.3,        -0.85,       1.0),
   'left side':           (0.3,        -0.5,      1.0),
   'middle':              (0,           -0.5,      1.0),
   'right side':          (-0.3,       -0.5,      1.0),
@@ -224,6 +224,15 @@ class Environment:
             p.addUserDebugLine([camera.x+beta, camera.y-beta, working_area], [camera.x-beta, camera.y-beta, working_area], [0, 1, 0], lineWidth=5)
             p.addUserDebugLine([camera.x-beta, camera.y-beta, working_area], [camera.x-beta, camera.y+beta, working_area], [0, 1, 0], lineWidth=5)
             p.addUserDebugLine([camera.x-beta, camera.y+beta, working_area], [camera.x+beta, camera.y+beta, working_area], [0, 1, 0], lineWidth=5)
+            
+            ### dish area         
+            working_area = 0.79 #m 
+            beta = 0.15
+            gamma = 0.25
+            p.addUserDebugLine([camera.x+beta-gamma, camera.y+beta-gamma, working_area], [camera.x+beta-gamma, camera.y-beta-gamma, working_area], [0, 1, 0], lineWidth=5)
+            p.addUserDebugLine([camera.x+beta-gamma, camera.y-beta-gamma, working_area], [camera.x-beta-gamma, camera.y-beta-gamma, working_area], [0, 1, 0], lineWidth=5)
+            p.addUserDebugLine([camera.x-beta-gamma, camera.y-beta-gamma, working_area], [camera.x-beta-gamma, camera.y+beta-gamma, working_area], [0, 1, 0], lineWidth=5)
+            p.addUserDebugLine([camera.x-beta-gamma, camera.y+beta-gamma, working_area], [camera.x+beta-gamma, camera.y+beta-gamma, working_area], [0, 1, 0], lineWidth=5)
 
         # Setup some Limit
         self.gripper_open_limit = (0.0, 0.1)
