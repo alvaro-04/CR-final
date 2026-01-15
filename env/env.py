@@ -347,8 +347,8 @@ class Environment:
             return True
         return False
 
-    def check_target_reached(self, obj_id):
-        aabb = p.getAABB(self.target_id, -1)
+    def check_target_reached(self, obj_id, target_loc):
+        aabb = p.getAABB(target_loc, -1)
         x_min, x_max = aabb[0][0], aabb[1][0]
         y_min, y_max = aabb[0][1], aabb[1][1]
         pos = p.getBasePositionAndOrientation(obj_id)
@@ -1018,7 +1018,7 @@ class Environment:
 
         return succes_grasp, succes_target"""
     
-    def clean_obj(self, obj_id: int, debug: bool = False, vis: bool = False, TARGET_ZONE_POS: tuple = None):
+    def clean_obj(self, obj_id: int, debug: bool = False, vis: bool = False, TARGET_ZONE_POS: tuple = None, target_loc: object = None):
         """
         Method to pick object by id and place it in tray location
         """
@@ -1055,7 +1055,10 @@ class Environment:
         for _ in range(20):
             self.step_simulation()
 
-        if self.check_target_reached(grasped_obj_id):
+        if target_loc is None:
+            target_loc = self.target_id
+        
+        if self.check_target_reached(grasped_obj_id, target_loc):
             succes_target = True
             #self.remove_obj(grasped_obj_id)
 
