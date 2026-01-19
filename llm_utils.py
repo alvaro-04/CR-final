@@ -1,13 +1,13 @@
 from huggingface_hub import InferenceClient
 import time
 import os
+
 import dotenv
 
 dotenv.load_dotenv()
 
-
-
-hugging_hub_token = os.environ.get("HF_TOKEN")
+HF_TOKEN = os.environ.get("HUGGINGFACE_TOKEN")
+hugging_hub_token = HF_TOKEN
 if hugging_hub_token is None:
     raise ValueError("Get your Hugging Hub API token from here: https://huggingface.co/docs/hub/security-tokens.\nThen, set it in llm_utils.py.")
 
@@ -21,13 +21,12 @@ def LLM(query,
         max_length=128,
         temperature=1.,
         return_full_text=False,
-        verbose=False,
-        debug=True):  # Set to True to see full output
+        verbose=True,
+        debug=True):
     
     new_prompt = f'{prompt}\n{query}\n'
     
-    # For instruction-tuned models, we need to format as a completion task, not chat
-    # Use a system message that emphasizes minimal, precise code completion
+    # completion msg
     messages = [
         {
             "role": "system",
@@ -41,12 +40,12 @@ def LLM(query,
     
     params = {
         "max_tokens": max_length,
-        "temperature": 0.1,  # Low temperature for more deterministic output
+        "temperature": 0.1, 
         "top_p": 0.9,
-        "repetition_penalty": 1.2,  # Discourage repetitive patterns
+
     }
     
-    # Add stop sequences if provided
+
     if stop_tokens:
         params["stop"] = stop_tokens
     
@@ -121,24 +120,9 @@ def LLM(query,
     lines = response_text.split('\n')
     robot_lines = [line for line in lines if line.strip().startswith('robot.')]
     
-    # Additional heuristic: if the user's command is singular (e.g., "put the pear"),
-    # likely only one command is needed. Stop at first newline after first robot command.
-    # Check if query mentions specific singular objects
-    query_lower = query.lower()
-    singular_indicators = ['the ', 'a ']
-    plural_indicators = ['all', 'each', 'every', 'both']
-    
-    is_likely_singular = (
-        any(ind in query_lower for ind in singular_indicators) and
-        not any(ind in query_lower for ind in plural_indicators)
-    )
-    
     if robot_lines:
-        if is_likely_singular and len(robot_lines) > 1:
-            # For singular commands, usually only need one action
-            # Unless the query explicitly asks for multiple things
             response_text = robot_lines[0]
-        else:
+    else:
             response_text = '\n'.join(robot_lines)
     
     if debug:

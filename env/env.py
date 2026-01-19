@@ -225,6 +225,16 @@ class Environment:
             p.addUserDebugLine([camera.x-beta, camera.y-beta, working_area], [camera.x-beta, camera.y+beta, working_area], [0, 1, 0], lineWidth=5)
             p.addUserDebugLine([camera.x-beta, camera.y+beta, working_area], [camera.x+beta, camera.y+beta, working_area], [0, 1, 0], lineWidth=5)
 
+        beta_small = 0.1
+        offset = -0.25
+
+        cx = camera.x + offset
+        cy = camera.y + offset
+
+        p.addUserDebugLine([cx + beta_small, cy + beta_small, working_area], [cx + beta_small, cy - beta_small, working_area], [1, 0, 0], lineWidth=5) # Red for visibility
+        p.addUserDebugLine([cx + beta_small, cy - beta_small, working_area], [cx - beta_small, cy - beta_small, working_area], [1, 0, 0], lineWidth=5)
+        p.addUserDebugLine([cx - beta_small, cy - beta_small, working_area], [cx - beta_small, cy + beta_small, working_area], [1, 0, 0], lineWidth=5)
+        p.addUserDebugLine([cx - beta_small, cy + beta_small, working_area], [cx + beta_small, cy + beta_small, working_area], [1, 0, 0], lineWidth=5)
         # Setup some Limit
         self.gripper_open_limit = (0.0, 0.1)
         self.ee_position_limit = ((-0.8, 0.8),
