@@ -285,19 +285,19 @@ class RobotEnvUI:
         # move to tray
         if where == 'tray':
             target_loc = self.TARGET_ZONE_POS
-            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc, target_loc = self.env.target_id)
         
         elif where == 'food tray':
             target_loc = self.TARGET_ZONE_FOOD
-            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc, target_loc = self.env.target_id_food)
 
         elif where == 'washing items tray':
             target_loc = self.TARGET_ZONE_WASHING_ITEMS
-            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc, target_loc = self.env.target_id_washing_items)
 
         elif where == 'toys tray':
             target_loc = self.TARGET_ZONE_TOYS
-            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc)
+            success_grasp, success_target = self.env.clean_obj(what, TARGET_ZONE_POS=target_loc, target_loc = self.env.target_id_toys)
 
 
         # move to table location
